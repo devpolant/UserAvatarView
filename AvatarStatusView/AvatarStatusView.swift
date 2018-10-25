@@ -35,9 +35,9 @@ public final class AvatarStatusView: UIView {
     
     // MARK: - Views
     
-    private let imageView = UIImageView()
+    public let imageView = UIImageView()
     
-    private let statusView = UIView()
+    private let statusView = UIImageView()
     
     private let maskLayer = CAShapeLayer()
     
@@ -60,11 +60,9 @@ public final class AvatarStatusView: UIView {
     private func setup() {
         backgroundColor = .clear
         
-        imageView.backgroundColor = .red
         imageView.layer.masksToBounds = true
         addSubview(imageView)
         
-        statusView.backgroundColor = .green
         statusView.layer.masksToBounds = true
         addSubview(statusView)
     }
@@ -115,5 +113,24 @@ public final class AvatarStatusView: UIView {
     private func statusPosition(in bounds: CGRect) -> CGPoint {
         return CGPoint(x: imageRadius * cos(angle) + bounds.width / 2,
                        y: imageRadius * sin(angle) + bounds.height / 2)
+    }
+}
+
+extension AvatarStatusView {
+    
+    public enum StatusAppearance {
+        case color(UIColor)
+        case image(UIImage)
+    }
+    
+    public func update(_ statusAppearance: StatusAppearance) {
+        switch statusAppearance {
+        case let .color(color):
+            statusView.backgroundColor = color
+            statusView.image = nil
+        case let .image(image):
+            statusView.backgroundColor = nil
+            statusView.image = image
+        }
     }
 }
