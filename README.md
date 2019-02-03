@@ -22,7 +22,7 @@ UserAvatarView is a UIView container subclass that wraps:
 
 ```ruby
 target 'MyApp' do
-  pod 'UserAvatarView', '~> 1.0'
+  pod 'UserAvatarView', '~> 1.1'
 end
 ```
 
@@ -31,3 +31,7 @@ end
 ```ogdl
 github "AntonPoltoratskyi/UserAvatarView" "master"
 ```
+
+## License
+
+UserAvatarView is available under the MIT license. See the [LICENSE](https://github.com/AntonPoltoratskyi/UserAvatarView/blob/master/LICENSE) file for more info.
