@@ -4,3 +4,26 @@
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/UserAvatarView.svg)](https://cocoapods.org/pods/UserAvatarView)
 
 # UserAvatarView
+
+UserAvatarView is a UIView subclass that has status view with customizable appearance, angle, radius
+
+## Requirements:
+- iOS 10.0+
+- Xcode 10.0+
+- Swift 4.2+
+
+## Installation
+
+#### CocoaPods
+
+```ruby
+target 'MyApp' do
+  pod 'UserAvatarView', '~> 1.0'
+end
+```
+
+#### Carthage
+
+```ogdl
+github "AntonPoltoratskyi/UserAvatarView" "master"
+```
