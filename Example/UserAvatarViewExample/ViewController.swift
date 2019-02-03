@@ -36,11 +36,11 @@ class ViewController: UIViewController {
         
         let initialAngle = 45
         slider.value = Float(initialAngle)
-        avatarView.angle = initialAngle.degreesToRadians
+        avatarView.statusAngle = initialAngle.degreesToRadians
         angleLabel.text = "Angle: \(initialAngle)"
         
         avatarView.imageView.backgroundColor = .green
-        avatarView.appearance = .color(.red)
+        avatarView.statusAppearance = .color(.red)
     }
     
     
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
     
     @IBAction func actionSliderValueChanged(_ sender: UISlider) {
         let angle = Int(sender.value)
-        avatarView.angle = CGFloat(angle.degreesToRadians)
+        avatarView.statusAngle = CGFloat(angle.degreesToRadians)
         angleLabel.text = "Angle: \(angle)"
     }
 }
