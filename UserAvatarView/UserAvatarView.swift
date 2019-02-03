@@ -1,6 +1,6 @@
 //
-//  AvatarStatusView.swift
-//  AvatarStatusView
+//  UserAvatarView.swift
+//  UserAvatarView
 //
 //  Created by Anton Poltoratskyi on 25.10.2018.
 //  Copyright © 2018 Anton Poltoratskyi. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class AvatarStatusView: UIView {
+public final class UserAvatarView: UIView {
     
     public var angle: CGFloat = .pi / 4 {
         didSet {
@@ -116,7 +116,7 @@ public final class AvatarStatusView: UIView {
     }
 }
 
-extension AvatarStatusView {
+extension UserAvatarView {
     
     public enum StatusAppearance {
         case color(UIColor)
