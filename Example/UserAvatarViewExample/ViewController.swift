@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         
         let initialRadius = 24
         radiusSlider.value = Float(initialRadius)
-        avatarView.statusRadius = CGFloat(initialRadius)
+        avatarView.statusIconSize = CGFloat(initialRadius)
         radiusLabel.text = "Radius: \(initialRadius)"
         
         let initialAngle = 45
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         angleLabel.text = "Angle: \(initialAngle)"
         
         avatarView.imageView.backgroundColor = .green
-        avatarView.update(.color(.red))
+        avatarView.appearance = .color(.red)
     }
     
     
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     
     @IBAction func actionRadiusSliderValueChanged(_ sender: UISlider) {
         let radius = Int(sender.value)
-        avatarView.statusRadius = CGFloat(radius)
+        avatarView.statusIconSize = CGFloat(radius)
         radiusLabel.text = "Radius: \(radius)"
     }
     

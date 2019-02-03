@@ -1,16 +1,16 @@
 PODS:
-  - UserAvatarView (0.1.0)
+  - UserAvatarView (1.0.0)
 
 DEPENDENCIES:
-  - UserAvatarView (= 0.1.0)
+  - UserAvatarView (~> 1.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - UserAvatarView
 
 SPEC CHECKSUMS:
-  UserAvatarView: ff33b454e90f94abfa2cdd6e794dfa62ba0c3321
+  UserAvatarView: 71204485a4d400362486849fe92afc278ecc654a
 
-PODFILE CHECKSUM: 478cb8ee7739e52136f9531b23553573306a1e9a
+PODFILE CHECKSUM: 901c805e7761eb4c142471ea5ff412a2e027e9f3
 
 COCOAPODS: 1.5.3
