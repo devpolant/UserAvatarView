@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,74 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UserAvatarViewExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t86-zr-XrK" customClass="UserAvatarView" customModule="UserAvatarView">
+                                <rect key="frame" x="127.5" y="148" width="120" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Heo-NP-Q9k"/>
+                                    <constraint firstAttribute="height" constant="120" id="VV6-kG-XfD"/>
+                                </constraints>
+                            </view>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="45" minValue="0.0" maxValue="360" translatesAutoresizingMaskIntoConstraints="NO" id="4DX-eR-vQv">
+                                <rect key="frame" x="14" y="566.5" width="229" height="31"/>
+                                <connections>
+                                    <action selector="actionSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="2fK-m9-Bi0"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="100" text="Angle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VpD-0B-hcx">
+                                <rect key="frame" x="257" y="571" width="102" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="24" minValue="0.0" maxValue="48" translatesAutoresizingMaskIntoConstraints="NO" id="rOY-Gz-fxv">
+                                <rect key="frame" x="14" y="504.5" width="229" height="31"/>
+                                <connections>
+                                    <action selector="actionRadiusSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="loz-48-ZAb"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="100" text="Radius" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfi-8C-k8e">
+                                <rect key="frame" x="257" y="509" width="102" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4DX-eR-vQv" firstAttribute="top" secondItem="rOY-Gz-fxv" secondAttribute="bottom" constant="32" id="3sq-gc-MnO"/>
+                            <constraint firstItem="4DX-eR-vQv" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="BiT-hS-nh5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VpD-0B-hcx" secondAttribute="trailing" constant="16" id="ZI7-ai-5J1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dfi-8C-k8e" secondAttribute="trailing" constant="16" id="Zol-k2-0uQ"/>
+                            <constraint firstItem="4DX-eR-vQv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="aBC-eX-daq"/>
+                            <constraint firstItem="t86-zr-XrK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="128" id="byW-EA-r6o"/>
+                            <constraint firstItem="VpD-0B-hcx" firstAttribute="centerY" secondItem="4DX-eR-vQv" secondAttribute="centerY" id="feo-Lv-r3I"/>
+                            <constraint firstItem="dfi-8C-k8e" firstAttribute="leading" secondItem="rOY-Gz-fxv" secondAttribute="trailing" constant="16" id="mQf-aq-FxP"/>
+                            <constraint firstItem="rOY-Gz-fxv" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="mgz-cu-4ha"/>
+                            <constraint firstItem="t86-zr-XrK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nEE-fQ-ZZl"/>
+                            <constraint firstItem="rOY-Gz-fxv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="pLi-wy-KA1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VpD-0B-hcx" secondAttribute="bottom" constant="75" id="teP-pb-4Gy"/>
+                            <constraint firstItem="dfi-8C-k8e" firstAttribute="centerY" secondItem="rOY-Gz-fxv" secondAttribute="centerY" id="wOJ-jx-Tvr"/>
+                            <constraint firstItem="VpD-0B-hcx" firstAttribute="leading" secondItem="4DX-eR-vQv" secondAttribute="trailing" constant="16" id="xIp-VI-ZOl"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="angleLabel" destination="VpD-0B-hcx" id="HHh-Hh-GVy"/>
+                        <outlet property="avatarView" destination="t86-zr-XrK" id="lmZ-wV-gRi"/>
+                        <outlet property="radiusLabel" destination="dfi-8C-k8e" id="9os-Gc-xwW"/>
+                        <outlet property="radiusSlider" destination="rOY-Gz-fxv" id="P7U-Qk-QR8"/>
+                        <outlet property="slider" destination="4DX-eR-vQv" id="yX7-M3-g1C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="56.221889055472268"/>
         </scene>
     </scenes>
 </document>
