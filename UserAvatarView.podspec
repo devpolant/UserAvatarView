@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.source      = { :git => "https://github.com/AntonPoltoratskyi/UserAvatarView.git", :tag => "#{s.version}" }
 
-  s.source_files    = "UserAvatarView/*.{swift}""
+  s.source_files    = "UserAvatarView/*.{swift}"
 
   s.framework       = "UIKit"
 
