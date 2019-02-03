@@ -5,7 +5,11 @@
 
 # UserAvatarView
 
-UserAvatarView is a UIView subclass that has status view with customizable appearance, angle, radius
+UserAvatarView is a UIView container subclass that wraps:
+- UIImageView
+- status view with customizable: appearance, angle, radius
+
+![Demo](https://github.com/AntonPoltoratskyi/UserAvatarView/blob/master/Example/UserAvatarViewDemo.gif)
 
 ## Requirements:
 - iOS 10.0+
