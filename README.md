@@ -22,7 +22,7 @@ UserAvatarView is a UIView container subclass that wraps:
 
 ```ruby
 target 'MyApp' do
-  pod 'UserAvatarView', '~> 1.1'
+  pod 'UserAvatarView', '~> 1.2'
 end
 ```
 
@@ -31,6 +31,36 @@ end
 ```ogdl
 github "AntonPoltoratskyi/UserAvatarView" "master"
 ```
+
+## Usage
+
+1) Declare UserAvatarView either in storyboard:
+```swift
+@IBOutlet weak var avatarView: UserAvatarView!
+```
+or programmatically.
+
+2) Setup appropriate properties:
+```swift
+avatarView.statusAppearance = .color(.red) 
+// avatarView.statusAppearance = .image(UIImage(named: "..."))
+// avatarView.statusAppearance = .none
+
+avatarView.statusAngle = .pi / 4
+
+avatarView.statusIconSize = 8
+
+avatarView.statusIconPadding = 2
+```
+
+3) UIImageView subview is public, so you can setup avatar image on `imageView`:
+```swift
+avatarView.imageView.image = avatarImage
+```
+
+## Author
+
+Anton Poltoratskyi
 
 ## License
 
