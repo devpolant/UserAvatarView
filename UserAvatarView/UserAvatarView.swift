@@ -10,7 +10,20 @@ import UIKit
 
 public final class UserAvatarView: UIView {
     
-    public var angle: CGFloat = .pi / 4 {
+    public enum StatusAppearance {
+        case color(UIColor)
+        case image(UIImage)
+        case none
+    }
+    
+    public var statusAppearance: StatusAppearance = .none {
+        didSet {
+            update(statusAppearance)
+            setNeedsLayout()
+        }
+    }
+    
+    public var statusAngle: CGFloat = .pi / 4 {
         didSet {
             setNeedsLayout()
         }
@@ -24,13 +37,6 @@ public final class UserAvatarView: UIView {
     
     public var statusIconPadding: CGFloat = 2 {
         didSet {
-            setNeedsLayout()
-        }
-    }
-    
-    public var appearance: StatusAppearance = .none {
-        didSet {
-            update(appearance)
             setNeedsLayout()
         }
     }
@@ -74,7 +80,7 @@ public final class UserAvatarView: UIView {
         statusView.layer.masksToBounds = true
         addSubview(statusView)
         
-        update(appearance)
+        update(statusAppearance)
     }
     
     private func update(_ appearance: StatusAppearance) {
@@ -140,16 +146,7 @@ public final class UserAvatarView: UIView {
     }
     
     private func statusPosition(in bounds: CGRect) -> CGPoint {
-        return CGPoint(x: imageRadius * cos(angle) + bounds.width / 2,
-                       y: imageRadius * sin(angle) + bounds.height / 2)
-    }
-}
-
-extension UserAvatarView {
-    
-    public enum StatusAppearance {
-        case color(UIColor)
-        case image(UIImage)
-        case none
+        return CGPoint(x: imageRadius * cos(statusAngle) + bounds.width / 2,
+                       y: imageRadius * sin(statusAngle) + bounds.height / 2)
     }
 }
