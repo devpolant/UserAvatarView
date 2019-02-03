@@ -16,20 +16,23 @@ public final class UserAvatarView: UIView {
         }
     }
     
-    public var statusRadius: CGFloat = 24 {
+    public var statusIconSize: CGFloat = 8 {
         didSet {
             setNeedsLayout()
         }
     }
     
-    public var statusPadding: CGFloat = 8 {
+    public var statusIconPadding: CGFloat = 2 {
         didSet {
             setNeedsLayout()
         }
     }
     
-    public var imageRadius: CGFloat {
-        return bounds.height / 2
+    public var appearance: StatusAppearance = .none {
+        didSet {
+            update(appearance)
+            setNeedsLayout()
+        }
     }
     
     
@@ -41,8 +44,16 @@ public final class UserAvatarView: UIView {
     
     private let maskLayer = CAShapeLayer()
     
+    private var isMaskActive: Bool {
+        return !statusView.isHidden
+    }
     
-    // MARK: - Init
+    private var imageRadius: CGFloat {
+        return bounds.height / 2
+    }
+    
+    
+    // MARK: - Setup
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,9 +65,6 @@ public final class UserAvatarView: UIView {
         setup()
     }
     
-    
-    // MARK: - Setup
-    
     private func setup() {
         backgroundColor = .clear
         
@@ -65,6 +73,25 @@ public final class UserAvatarView: UIView {
         
         statusView.layer.masksToBounds = true
         addSubview(statusView)
+        
+        update(appearance)
+    }
+    
+    private func update(_ appearance: StatusAppearance) {
+        switch appearance {
+        case let .color(color):
+            statusView.isHidden = false
+            statusView.backgroundColor = color
+            statusView.image = nil
+        case let .image(image):
+            statusView.isHidden = false
+            statusView.backgroundColor = nil
+            statusView.image = image
+        case .none:
+            statusView.isHidden = true
+            statusView.backgroundColor = nil
+            statusView.image = nil
+        }
     }
     
     
@@ -74,18 +101,22 @@ public final class UserAvatarView: UIView {
         super.layoutSubviews()
         
         imageView.frame = bounds
-        imageView.layer.cornerRadius = bounds.height / 2
+        imageView.layer.cornerRadius = imageRadius
         
-        let clipCircleCenter = statusPosition(in: bounds)
-        let clipCircleSize = statusRadius + statusPadding * 2
-        let clipCircleFrame = CGRect(
-            x: clipCircleCenter.x - clipCircleSize / 2,
-            y: clipCircleCenter.y - clipCircleSize / 2,
-            width: clipCircleSize,
-            height: clipCircleSize
-        )
-        updateClipMask(with: clipCircleFrame)
-        updateStatusView(with: clipCircleFrame)
+        if isMaskActive {
+            let clipCircleCenter = statusPosition(in: bounds)
+            let clipCircleSize = statusIconSize + statusIconPadding * 2
+            let clipCircleFrame = CGRect(
+                x: clipCircleCenter.x - clipCircleSize / 2,
+                y: clipCircleCenter.y - clipCircleSize / 2,
+                width: clipCircleSize,
+                height: clipCircleSize
+            )
+            updateClipMask(with: clipCircleFrame)
+            updateStatusView(with: clipCircleFrame.origin)
+        } else {
+            imageView.layer.mask = nil
+        }
     }
     
     private func updateClipMask(with frame: CGRect) {
@@ -99,15 +130,13 @@ public final class UserAvatarView: UIView {
         imageView.layer.mask = maskLayer
     }
     
-    private func updateStatusView(with frame: CGRect) {
-        let size = frame.width - statusPadding * 2
+    private func updateStatusView(with origin: CGPoint) {
+        statusView.frame = CGRect(x: origin.x + statusIconPadding,
+                                  y: origin.y + statusIconPadding,
+                                  width: statusIconSize,
+                                  height: statusIconSize)
         
-        statusView.frame = CGRect(x: frame.minX + statusPadding,
-                                  y: frame.minY + statusPadding,
-                                  width: size,
-                                  height: size)
-        
-        statusView.layer.cornerRadius = size / 2
+        statusView.layer.cornerRadius = statusIconSize / 2
     }
     
     private func statusPosition(in bounds: CGRect) -> CGPoint {
@@ -121,16 +150,6 @@ extension UserAvatarView {
     public enum StatusAppearance {
         case color(UIColor)
         case image(UIImage)
-    }
-    
-    public func update(_ statusAppearance: StatusAppearance) {
-        switch statusAppearance {
-        case let .color(color):
-            statusView.backgroundColor = color
-            statusView.image = nil
-        case let .image(image):
-            statusView.backgroundColor = nil
-            statusView.image = image
-        }
+        case none
     }
 }
