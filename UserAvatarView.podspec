@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   s.name        = "UserAvatarView"
 
-  s.version     = "1.2.0"
+  s.version     = "1.3.0"
 
   s.summary     = "UserAvatarView is a UIView subclass that has customizable status view"
 
@@ -22,6 +22,6 @@ Pod::Spec.new do |s|
 
   s.framework       = "UIKit"
 
-  s.swift_version   = "4.2"
+  s.swift_version   = "5.0"
 
 end

@@ -2,5 +2,5 @@ platform :ios, '10.0'
 
 target 'UserAvatarViewExample' do
   use_frameworks!
-  pod 'UserAvatarView', '~> 1.2'
+  pod 'UserAvatarView', :path => '../'
 end
